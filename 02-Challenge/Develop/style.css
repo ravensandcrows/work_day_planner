@@ -31,18 +31,24 @@ textarea {
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color:rgba(47, 79, 79, 0.75);
   color: white;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color:aliceblue;
   color: white;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color:lightblue;
   color: white;
+}
+
+.dot{
+  border-radius: 50%;
+  border-color: red;
+  border-style: solid;
 }
 
 .saveBtn {

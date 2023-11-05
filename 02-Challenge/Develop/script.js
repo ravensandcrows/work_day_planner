@@ -13,25 +13,61 @@ $(document).ready(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+
+  
+
+  function current_hour(){
+    //TIME BLOCK VARIABLES
+    // var hour_9 = document.getElementById("hour-9");
+    // var hour_10 = document.getElementById("hour-10");
+    // var hour_11 = document.getElementById("hour-11");
+    // var hour_12 = document.getElementById("hour-12");
+    // var hour_1 = document.getElementById("hour-1");
+    // var hour_2 = document.getElementById("hour-2");
+    // var hour_3 = document.getElementById("hour-3");
+    // var hour_4 = document.getElementById("hour-4");
+    // var hour_5 = document.getElementById("hour-5");
+
+    var current_time = dayjs().hour();
+    //day.js uses 24 hour clock ^^
+    
+    // move through each hour block 
+    $('.time-block').each(function(){
+      //THIS targets the curent referenced object
+      //attr target the attribute
+      //split removes the item
+      var block = parseInt($(this).attr('id').split('-')[1]);
+      //get to the child element to add a circle by the number
+      var dot = $(this).find(".py-3");
+
+      if(block < current_time){
+        $(this).addClass('past');
+        $(dot).removeClass('dot');
+      }
+      else if (block === current_time){
+        $(this).removeClass('past');
+        $(this).addClass('present');
+        $(dot).addClass('dot');
+      }
+      else{
+        $(this).removeClass('past');
+        $(this).removeClass('present');
+        $(this).addClass('future');
+        $(dot).removeClass('dot');
+      }
+    });
+  }
+  
+  current_hour();
+
+
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
-  function current_date(){
-    var visible_date = document.getElementById("currentDay")
-    var current_date = new Date();
-    var current_day = current_date.getDate();
-    //add one since jan starts at 0;
-    var current_month = current_date.getMonth() + 1;
-    var current_year = current_date.getFullYear();
 
-    visible_date.innerText = current_month + " / " + current_day + " / " + current_year;
-  }
-  // current_date();
-
-  // display current day on page
+  // displays the current day and the current time
   $('#currentDay').text(dayjs().format('dddd, MMMM DD, YYYY'));
   $('#currentTime').text(dayjs().format('hh:mm a'));
 });
