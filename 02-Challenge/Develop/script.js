@@ -7,26 +7,36 @@ $(document).ready(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  //
+  $('.saveBtn').on('click', function(){
+
+    //get user input + associated time
+
+    //gets the text area assoicated with the save button and records its value
+    var planner_text = $(this).siblings('.description').val();
+    //gets the assocaited time with the save button
+    var time_saved = $(this).parent().attr('id');
+
+    //save to local storage
+    localStorage.setItem(time_saved, planner_text);
+    //show notification was saved
+    $('.notification').addClass('visible');
+
+    
+
+    // hides the notification after three seconds
+    setTimeout(function () {
+      $('.notification').removeClass('visible');
+    }, 3000);
+  });
+
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 
-  
-
   function current_hour(){
-    //TIME BLOCK VARIABLES
-    // var hour_9 = document.getElementById("hour-9");
-    // var hour_10 = document.getElementById("hour-10");
-    // var hour_11 = document.getElementById("hour-11");
-    // var hour_12 = document.getElementById("hour-12");
-    // var hour_1 = document.getElementById("hour-1");
-    // var hour_2 = document.getElementById("hour-2");
-    // var hour_3 = document.getElementById("hour-3");
-    // var hour_4 = document.getElementById("hour-4");
-    // var hour_5 = document.getElementById("hour-5");
 
     var current_time = dayjs().hour();
     //day.js uses 24 hour clock ^^
@@ -65,7 +75,17 @@ $(document).ready(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
+  //load storage
+  
+  $('#hour-9 .description').val(localStorage.getItem('hour-9'));
+  $('#hour-10 .description').val(localStorage.getItem('hour-10'));
+  $('#hour-11 .description').val(localStorage.getItem('hour-11'));
+  $('#hour-12 .description').val(localStorage.getItem('hour-12'));
+  $('#hour-13 .description').val(localStorage.getItem('hour-13'));
+  $('#hour-14 .description').val(localStorage.getItem('hour-14'));
+  $('#hour-15 .description').val(localStorage.getItem('hour-15'));
+  $('#hour-16 .description').val(localStorage.getItem('hour-16'));
+  $('#hour-17 .description').val(localStorage.getItem('hour-17'));
 
   // displays the current day and the current time
   $('#currentDay').text(dayjs().format('dddd, MMMM DD, YYYY'));
