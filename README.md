@@ -13,3 +13,6 @@ https://www.w3schools.com/jsref/jsref_parseint.asp
 https://www.w3schools.com/jsref/jsref_split.asp#:~:text=The%20split()%20method%20splits,string%20is%20split%20between%20words.
 
 https://api.jquery.com/find/
+
+##local storage
+https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage

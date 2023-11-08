@@ -67,3 +67,13 @@ textarea {
 #currentTime{
   font-size: 150%;
 }
+
+.notification{
+  padding-bottom: 5px;
+  text-decoration: underline;
+  display:none;
+}
+
+.visible{
+  display:block;
+}
